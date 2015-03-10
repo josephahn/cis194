@@ -1,5 +1,6 @@
 {-# OPTIONS_GHC -Wall #-}
 module HW02 where
+import Data.List
 
 -- Mastermind -----------------------------------------
 
@@ -23,7 +24,12 @@ colors = [Red, Green, Blue, Yellow, Orange, Purple]
 
 -- Get the number of exact matches between the actual code and the guess
 exactMatches :: Code -> Code -> Int
-exactMatches = undefined
+exactMatches c1 c2 = count 0 (zip c1 c2)
+  where count :: Int -> [(Peg, Peg)] -> Int
+        count acc [] = acc
+        count acc (x:xs)
+          | fst x == snd x = count (acc + 1) xs
+          | otherwise = count acc xs
 
 -- Exercise 2 -----------------------------------------
 
