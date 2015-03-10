@@ -30,7 +30,11 @@ doubleEveryOther (x:y:xs) = x : y*2 : doubleEveryOther xs
 
 -- Calculate the sum of all the digits in every Integer.
 sumDigits :: [Integer] -> Integer
-sumDigits = undefined
+sumDigits []  = 0
+sumDigits [x]
+  | x > 9     = (x `div` 10) + (x `mod` 10)
+  | otherwise = x
+sumDigits (x:xs) = sumDigits [x] + sumDigits xs
 
 
 -- Exercise 5 -----------------------------------------
