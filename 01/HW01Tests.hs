@@ -66,8 +66,15 @@ ex5Tests = [ Test "luhn test" testLuhn
 
 -- Exercise 6 -----------------------------------------
 
+testHanoi :: (Integer, String, String, String, [(String, String)]) -> Bool
+testHanoi (n, a, b, c, result) = hanoi n a b c == result
+
 ex6Tests :: [Test]
-ex6Tests = []
+ex6Tests = [ Test "hanoi test" testHanoi
+             [(1, "a", "b", "c", [("a","b")]),
+              (2, "a", "b", "c", [("a","c"),("a","b"),("c","b")]),
+              (3, "a", "b", "c", [("a","b"),("a","c"),("b","c"),("a","b"),("c","a"),("c","b"),("a","b")])]
+           ]
 
 -- All Tests ------------------------------------------
 
