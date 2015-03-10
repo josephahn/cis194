@@ -34,8 +34,14 @@ ex2Tests = [ Test "toRevDigits test" testToRevDigits
 
 -- Exercise 3 -----------------------------------------
 
+testDoubleEveryOther :: ([Integer], [Integer]) -> Bool
+testDoubleEveryOther (orig, doubled) = doubleEveryOther orig == doubled
+
 ex3Tests :: [Test]
-ex3Tests = []
+ex3Tests = [ Test "doubleEveryOther test" testDoubleEveryOther
+             [([4, 9, 5, 5], [4, 18, 5, 10]), ([], []), ([1], [1]),
+              ([0, 0], [0, 0]), ([1, 2, 3], [1, 4, 3])]
+           ]
 
 -- Exercise 4 -----------------------------------------
 
